@@ -1,0 +1,53 @@
+TokenSwap
+Airdrop
+NFT 
+Market
+
+//Making checks for enabling safe
+Load Transfer
+Load Safe
+Create Safe
+Rebuilding entire project here 
+--UseEthers
+-- UseEtherStore
+
+ChakraUI
+NextJS
+ReactForms
+Heroicons
+tYPESCRIPTS
+cUSTOMhOOKS
+
+
+Token- Token swap
+
+// A token-token button 
+// Create a transaction 
+Execute the transaction 
+*Loading, the associated with the transaction
+// Verify the recipients of the transaction
+
+Air drop
+
+AppAlertDialogs
+AppModal
+AppSide
+
+--Transfer--
+CreateTransfer
+ExecuteTransfer
+
+Page
+Page Creator
+Pages of each swap
+Buttons for executing swaps 
+Pages for executing each of the actions
+Main pages
+To join the main page of actions 
+
+Wallet
+Layer2 connections
+
+
+
+

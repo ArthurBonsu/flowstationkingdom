@@ -1,0 +1,118 @@
+is safe selected,
+get and pass iin the safe address
+else 
+get the safe information 
+
+ is module enabled
+set the module as safemodule enabled
+else 
+
+set is module enabled as true
+enable module 
+
+execute the module 
+makes checks on the module such as transaction waiting,signing and others 
+approve the transaction to be done
+
+get the transaction details
+
+
+
+if checks such as is transaction waiting, is signing done and others are done 
+approve the transactions 
+
+Extracting the parameters eg, execute transaction and safeTransaction, how to get it 
+Getting the parameters 
+
+
+onclick
+onclick
+
+
+
+
+
+  return (
+    <chakra.form py={2}>
+
+
+      {fields.map((f, idx) => {
+      const tokenname = errors.[index].tokenname
+      const symbol = errors.[index].symbol
+      const decimals = errors.[index].decimals
+      const logoUri = errors.[index].decimals
+      const isLastIndex = fields.length - 1 === index
+
+    <Grid placeItems="center" w="full" h="100vh">
+      <Box w="500px" shadow="md" p="10" borderRadius="md" bg="gray.50">
+        <Flex
+          direction="column"
+          css={{
+            gap: '20px',
+          }}
+        >
+      
+        <form onSubmit={handleSubmit(onSubmit)}>
+             
+             <FormControl>
+                <FormLabel htmlFor="tokenswapinputs" fontWeight="normal">
+                 Swap Input Form 
+                <Flex flexDirection="column" mt="20px">
+                </Flex>
+                  </FormLabel>               
+                  
+                <InputGroup  size="sm">
+              
+                <Input  value={amount} onChange={handleChange}   size='sm'   variant='outline' placeholder='inputamount'  {...register("amount", { required: true })} mb="5px" bg="white" />
+                <p>{errors.amount?.message}</p>
+
+               <InputRightAddon> 
+              { tokenLists.map(({ nameoftoken, symbol }) => (<Select placeholder='Select Tokens'>
+              <option  value= { nameoftoken}> { symbol}</option>
+                  
+              </Select> ))}
+              
+              </InputRightAddon>
+                
+                
+                </InputGroup>             
+                {!isTyping ? (<Text fontSize='50px' color='tomato'>  Amount is  {amount} </Text>): (<Text fontSize='50px' color='tomato'>  Amount is {0.0} </Text>)  }
+              </FormControl>
+
+
+              <Text fontSize='xl'>(xl) Click To Swap Tokens</Text>  
+             
+             
+              <Button
+              isLoading
+              bg="blue.200"
+              _hover={{ bg: 'blue.300' }}
+              textColor="white"
+              type="submit"
+              w="full"
+              mt="20px"
+              onClick={() => onSubmit}
+              loadingText='Swapping'
+            >
+                 Swap Now
+          
+            </Button>
+            <Text fontSize='25px' color='tomato'>
+                Calculated Token Value 
+            </Text>
+            <FormControl w="150px" id={`${idx}`} isInvalid={!!assetError?.message} mx={2}>
+              <FormLabel>Asset</FormLabel>
+              <FormErrorMessage>{assetError?.message}</FormErrorMessage>
+            </FormControl> 
+            <InputRightAddon> 
+            { tokenLists.map(({ tokenname, symbol }) => (<Select placeholder='Select Tokens'>
+              <option value= { tokenname}> { symbol}</option>
+                  
+              </Select> ))}
+            </InputRightAddon>
+                      
+          </form>
+        </Flex>
+      </Box>
+    </Grid>
+  )  

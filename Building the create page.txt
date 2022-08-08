@@ -1,0 +1,27 @@
+import Router from 'next/router'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
+import { ethers } from 'ethers'
+
+import queries from '@services/queries'
+import { getLayout, WithPageLayout } from '@components/Layout'
+import { useEthersStore } from '@stores/ethersStore'
+
+import getSafesWithoutModule from '@utils/getSafesWithoutModule'
+
+
+  const walletAddress = useEthersStore((state) => state.address)
+  const walletCheckSumAddress = walletAddress ? ethers.utils.getAddress(walletAddress) : ''
+  const [selectedSafe, setSelectedSafe] = useState<string>()
+ 
+ const { data, isLoading } = useQuery(`safe-${walletCheckSumAddress}`, queries.getSafe(walletCheckSumAddress), {
+    enabled: !!walletAddress,
+    cacheTime: 100,
+  })
+
+
+const onCreateSafe = async () => Router.push(`/create`)
+
+ <Button colorScheme="blue" isFullWidth onClick={onCreateSafe}>
+          Create Safe
+        </Button>

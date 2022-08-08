@@ -1,0 +1,107 @@
+return (
+  <chakra.form py={2}>
+
+
+    {fields.map((item, index) => {
+           const amountError = errors.tokenname[index].amount
+          const tokennameError = errors.tokenname[index].tokenname
+          const symbolError = errors.tokenname[index].symbol
+          const decimalsError = errors.tokenname[index].decimals
+          const logoUriError = errors.tokenname[index].decimals
+          const isLastIndex = fields.length - 1 === index
+      const isLastItem = fields.length - 1 === index
+      return (
+
+
+        
+        <Flex flexDirection="row" py={4} key={item.id}>
+
+       <FormControl id={`tokenlist.${index}.amount`} w="150px" isInvalid={!!amountError?.message} mx={2}>
+            <FormLabel htmlFor="amount">Amount</FormLabel>
+            <NumberInput
+              {...register("amount" )}
+              id={`tokenlist.${index}.amount`}
+              step={0.01}
+              precision={2}
+              min={0}
+              max={undefined}
+              onChange={handleChange}
+              isReadOnly={isLoading}
+            >
+              <NumberInputField name={`tokenlist.${index}.amount`} placeholder="0.00" />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+            <FormErrorMessage>{amountError?.message}</FormErrorMessage>
+          </FormControl>
+
+
+          <FormControl w="150px" id={`tokenlist.${index}.tokenname`} isInvalid={!!tokennameError?.message} mx={2}>
+            <FormLabel> TokenLists</FormLabel>
+            <>     
+            <Select {...register("tokenname")} placeholder="Select option" isReadOnly={isLoading} onSelect={ manageSelection} 
+             >
+               
+               
+                  {fields.map((item, index) => (
+                <option key={item.id} value={`tokenlist.${index}.tokenname`}>
+                  {`tokenlist.${index}.symbol`}
+                </option>
+             
+              
+             
+             ))
+           
+              
+              }
+                
+            </Select>
+          
+            
+           <FormErrorMessage>{tokennameError?.message}</FormErrorMessage>
+            </>
+          </FormControl> 
+          
+          <Stack direction='row' spacing={4}>
+       
+            <Button
+            isLoading
+             loadingText={isLoading? 'Reconnecting Metamask' : 'Connected'}  
+            colorScheme='teal'
+             variant='outline'
+             onClick={()=> {              
+            return(
+              <>
+             <AppAlertDialog
+              isLoading={isLoading}
+              handleSubmit={() =>{ onConnect()
+              setIsLoading(false)}}
+              header="Connect Metamask"
+              body="Press Connect To Retry to Connect To Your Metamask Again"
+              disclosure={localDisclosure}
+              /// An Onclose Event or function 
+              customOnClose={() => {
+                localDisclosure.onClose()
+                setIsLoading(false)
+                
+              }}
+           
+            />
+            
+            </>
+            ) 
+          
+          }
+        }
+  >         
+    Connect Metamask
+  </Button>
+</Stack>       
+    
+    } 
+
+  }
+
+export default TokenSwapOriginal
